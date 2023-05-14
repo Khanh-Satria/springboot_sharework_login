@@ -18,7 +18,7 @@ import com.springboot.sharework.payload.SignInRequest;
 import com.springboot.sharework.payload.SignInResponse;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping(value = "/api/auth")
 public class AuthContronller {
 
 	@Value("${firebase.apiKey}")
@@ -39,7 +39,7 @@ public class AuthContronller {
 		return new  ResponseEntity<>(response, HttpStatus.OK);
 	}
 	
-	@PostMapping("/register")
+	@PostMapping(value = "/register")
 	public ResponseEntity<String> createUser(@RequestBody RegisterDto registerDto) throws FirebaseAuthException{
 		
 		String response = authenService.createUser(registerDto);
@@ -49,7 +49,7 @@ public class AuthContronller {
 	
 	
 	
-	@PostMapping("/signin")
+	@PostMapping(value = "/signin")
     public ResponseEntity<SignInResponse> signIn(@RequestBody SignInRequest request) {
 		
 		SignInResponse response = authenService.login(request);
